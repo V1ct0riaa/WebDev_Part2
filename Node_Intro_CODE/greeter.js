@@ -3,3 +3,5 @@ for (let arg of args) {
     console.log(`Hi there, ${arg}`)
 }
 
+
+
