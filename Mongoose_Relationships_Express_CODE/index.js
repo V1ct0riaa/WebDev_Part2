@@ -31,9 +31,12 @@ app.get('/farms', async (req, res) => {
     const farms = await Farm.find({});
     res.render('farms/index', { farms })
 })
+
 app.get('/farms/new', (req, res) => {
     res.render('farms/new')
+
 })
+
 app.get('/farms/:id', async (req, res) => {
     const farm = await Farm.findById(req.params.id).populate('products');
     res.render('farms/show', { farm })
@@ -41,12 +44,8 @@ app.get('/farms/:id', async (req, res) => {
 
 app.delete('/farms/:id', async (req, res) => {
     const farm = await Farm.findByIdAndDelete(req.params.id);
-
     res.redirect('/farms');
 })
-
-
-
 
 app.post('/farms', async (req, res) => {
     const farm = new Farm(req.body);
@@ -71,8 +70,6 @@ app.post('/farms/:id/products', async (req, res) => {
     await product.save();
     res.redirect(`/farms/${id}`)
 })
-
-
 
 // PRODUCT ROUTES
 
